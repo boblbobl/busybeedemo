@@ -29,7 +29,6 @@
 }
 
 #teaser {
-  background-color: #2787b7;
   background-image: url(/static/images/whitey.png);
   background-repeat: repeat-x;
   border-bottom: solid 1px #999;
@@ -61,11 +60,6 @@
   top: 20px;
   left: 18px;
 }
-/*
-#teaser p {
-  color: #efefef;
-}       
-*/
 
 #teaser a#sign-up {
   margin-bottom: 20px;
@@ -86,6 +80,7 @@
   font-family: 'Rock Salt', cursive;
   font-size: 24px; 
   font-size: 2.4rem;
+  color: #444;
 }
 
 #main .row {
