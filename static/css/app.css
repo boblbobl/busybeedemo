@@ -67,13 +67,42 @@
 
 #footer {
   background-image: url(/static/images/black_linen_v2.png);
-  border-top: solid 1px #212121;
-  height: 200px;
+  border-top: solid 1px #666;
+  color: #dedede;
+  margin-top: 80px;
+}
+
+#footer p {
+  margin-bottom: 10px;
 }
 
 #footer h5 {
-  margin-top: 20px;
-  color: #efefef;
+  margin-top: 30px;
+  color: #fefefe;
+}
+
+#footer h6 {
+  margin-top: 5px;
+  
+}
+
+#footer a {
+  color: #dedede;
+}
+
+#footer a:hover {
+  text-decoration: underline;
+  color: #fefefe;
+}
+
+#footer p.blogpost,
+#footer p.tweet,
+#footer p.copyright {
+  font-size: smaller;
+}
+
+#footer img#footer-logo {
+  margin-top: 50px;
 }
 
 #main #highlights h4 {

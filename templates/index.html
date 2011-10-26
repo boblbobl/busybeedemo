@@ -11,7 +11,7 @@
 	<!-- Set the viewport width to device width for mobile -->
 	<meta name="viewport" content="width=device-width" />
 	
-	<title>Employee Scheduling Software, Staff Scheduling Tool | BusyBeeManager</title>
+	<title>Online Scheduling has never been this Easy | BusyBeeManager</title>
   
 	<!-- Included CSS Files -->
 	<!-- These files are being included - to omit files, move them to the block below. -->
@@ -46,6 +46,19 @@
 
 </head>
 <body>
+  
+  <div id="myModal" class="reveal-modal">
+    <h3>Login</h3>
+    <p>When you registered for BusyBeeManager, we sent you a welcome email with your private URL.</p>
+    <p>You need to go to this unique web address to login to your account. If you have trouble locating this email from us, we can find it for you.</p>
+    <p>Enter your email address and we’ll send you the account(s) associated with it.</p>
+    <form class="nice">
+      <input type="text" class="input-text" placeholder="youremail@address.com" /><a href="#" class="small radius charcoal button">Remind Me</a>
+    </form>
+    
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  
   <!-- Top Bar -->
   <div id="top" class="container">
     <div class="row">
@@ -53,7 +66,7 @@
         <img id="logo" src="/static/images/logo_white.png" />
       </div>
       <div class="four columns hide-on-phones">
-        <a id="top-sign-up" href="/signup" class="nice small radius white button right">Sign Up</a>				
+        <a id="top-sign-up" href="#login" class="nice small radius white button right" data-reveal-id="myModal">Login</a>				
       </div>
     </div>
   </div>
@@ -67,12 +80,12 @@
           This web application has forever transformed the way managers of small businesses such as cafes, restaurants, bars, shops and even pet service centers maintain work schedules and rosters.
         </p>
         <a id="sign-up" href="#" class="nice large radius button">Sign up today for 30-day free trial</a>
-        <p>or use our free limited plan option</p>
+        <p>or use our <a href="#">free</a> limited plan option</p>
       </div>
       <div class="six columns">
         <div id="monitor-wrapper">
           <img id="monitor" src="/static/images/monitor.png" />
-          <img id="screen" src="/static/images/screen-1.png" />
+          <a href="#"><img id="screen" src="/static/images/screen.png" /></a>
         </div>
       </div>
     </div>
@@ -154,7 +167,7 @@
 		
 		<div class="row">
 			<div class="four columns">
-				<h4>Pick a Plan</h4>
+				<h4>BusyBeeManager is...</h4>
 			</div>
 			
 			<div class="eight columns">
@@ -225,12 +238,26 @@
 		  <div class="twelve columns">
 		    <h4>See it in Action</h4>
 		    <hr />
-		    <div id="screencasts">
-		      
-		    </div>
 		  </div>
 		</div>
-		
+		<div class="row" style="margin-top: -30px;">
+		  <div class="three columns center">
+		    <img src="/static/images/screencast.png" /><br />
+		    Automatic Employee Scheduling
+		  </div>
+		  <div class="three columns center">
+		    <img src="/static/images/screencast.png" /><br />
+		    Define Staffing Needs
+		  </div>
+		  <div class="three columns center">
+		    <img src="/static/images/screencast.png" /><br />
+		    Manage Employees
+		  </div>
+		  <div class="three columns center">
+		    <img src="/static/images/screencast.png" /><br />
+		    Save Schedules as Templates
+		  </div>
+		</div>
 	</div>
 	
 	<!-- Footer -->
@@ -239,13 +266,66 @@
     <div class="row">
       <div class="four columns">
         <h5>Subscribe to our Newsletter</h5>
+        <p>
+          Hear about new features, promos, discounts and more. 
+          Subscribe to our periodic newsletters.
+        </p>
+        <form class="nice">
+          <input type="text" class="input-text" placeholder="youremail@address.com" />
+        </form>
+        <p>
+          Enter your e-mail address and press enter.  
+        </p>
+        <p>
+          You can always unsubscribe the newsletter.
+        </p>
       </div>
       <div class="four columns">
         <h5>Recent posts from our Blog</h5>
+        <h6><a href="#">Employee Scheduling For New Managers</a></h6>
+        <p class="blogpost">
+          There is nothing more intimidating to a new manager than 
+          completing that employee schedule for the first time...
+        </p>
+        <h6><a href="#">Retail Employee Scheduling – Case Story</a></h6>
+        <p class="blogpost">
+          We recently did a small interview with retail gift store 
+          Acquisitions from Timaru, New Zealand...
+        </p>
+        <p>
+          <a href="#">See all blog posts</a>
+        </p>
       </div>
       <div class="four columns">
         <h5>Heard on Twitter</h5>
+        <p class="tweet">
+          <a href="#">
+            Check out our new automatic employee scheduling tutorial. #busybee - @busybee
+          </a>
+        </p>
+        <p class="tweet">
+          <a href="#">
+            The new version of #busybee is soon to be released. - @busybee
+          </a>
+        </p>
+        <p class="tweet">
+          <a href="#">
+            #busybee is the best online scheduling software out there - @propellerhead
+          </a>
+        </p>
+        <p>
+          <a href="#">Follow us on twitter</a>
+        </p>
       </div>
+    </div>
+    
+    <div class="row">
+      <div class="twelve columns center">
+		    <img id="footer-logo" src="/static/images/logo_white.png" />
+		    <p class="copyright">
+		      &copy; 2011 BusyBeeManager. All Rights Reserved.
+		    </p>
+		  </div>
     </div>
   </div>
 	
