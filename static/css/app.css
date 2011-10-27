@@ -24,8 +24,9 @@
   margin-top: 8px;
 }
 
-#top a#top-sign-up {
+#top #nav a {
   margin-top: 10px;
+  margin-left: 10px;
 }
 
 #teaser {
@@ -87,6 +88,7 @@
 }
 
 #footer a {
+  text-decoration: underline;
   color: #dedede;
 }
 
@@ -121,6 +123,14 @@
   height: 100px;
 }
 
+#main #features h4 {
+  margin-bottom: -5px;
+}
+
+#main #features p {
+  font-size: smaller;
+  margin-bottom: -8px;
+}
 
 .center {
   text-align: center;
