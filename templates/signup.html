@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block body %}
+<form id="signup-form" class="nice">
+  
+  <div class="row">
+    <div class="twelve columns">
+      <h1>Sign up</h1>
+      <p>       
+        Please input a few details, and you will be good to go!<br />
+        All fields are mandatory.
+      </p>      
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="four columns">
+      
+      <h4>Personal Details</h4>
+      <p>
+        <label for="firstname">First Name(s)</label>
+        <input id="firstname" name="firstname" type="text" class="required input-text" />
+        <label for="lastname">Last Name</label>
+        <input id="lastname" name="lastname" type="text" class="required input-text" />
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="text" class="required email input-text" />
+        <label for="confirmemail">Confirm E-mail</label>
+        <input id="confirmemail" name="confirmemail" type="text" class="input-text" />
+      </p>
+    </div>
+    <div class="four columns">
+      <h4>Company Name and Address</h4>
+      <p>
+        <label for="name">Company or Group Name</label>
+        <input id="name" name="name" type="text" class="required input-text" />
+      </p>
+      <p>
+        <label for="url">Address to Your Account</label>
+        <strong>http://</strong><input id="url" name="url" type="text" class="required input-text" /><strong>.busybeehq.com</strong>
+      </p>
+    </div>
+    <div class="four columns">
+      <h4>Billing</h4>
+      <ul>
+        <li>We do not require and credit card information to get you started.</li>
+        <li>It is only if you decide to keep your account for more than 30 days, that we will ask you to pay.</li>
+      </ul>
+      <p>
+        <strong>Product:</strong>
+        Plus ($15)
+      </p>
+      <p>
+        <input id="terms" name="terms" type="checkbox" /> I agree with the <a href="#">Terms and Conditions</a>
+      </p>
+      <a href="#sign-up" id="btn-signup" class="large radius charcoal button right">Create Account</a>
+      <!-- input id="btn-signup" type="button" disabled="disabled" value="Sign up" class="small radius charcoal button right" / -->
+    
+    </div>
+  </div>
+</form>
+
+
+<script type="text/javascript" src="http://static.busybeehq.com/static/js/jquery.validate.js"></script>
+<script type="text/javascript"> 
+	$(function() {
+	  //jQuery.validator.messages.required = '';
+	  
+	  $("#signup-form").validate({
+      messages: {
+        url: {
+          required: ""
+        }
+      },
+      rules: {
+        email: "required",
+        confirmemail: "required",
+        confirmemail: {
+          equalTo: "#email"
+        }
+      }
+    });
+	  
+	  $("input#terms").click(function(){
+	    if ($(this).is(':checked') == true)
+	      $("input#btn-signup").removeAttr('disabled');
+	    else
+	      $("input#btn-signup").attr('disabled', 'disabled');
+	  });
+	  
+	  $("input#btn-signup").click(function(){
+	    if ($("#signup-form").valid()) {
+	      $("input#btn-signup").attr('disabled', 'disabled');
+	      
+	      $.ajax({
+          url: 'http://static.busybeehq.com/api/json?method=busybee.account.signup',
+          dataType: 'json',
+          data: {
+            name: $("#url").val(),
+            companyname: $("#name").val(),
+            firstname: $("#firstname").val(),
+            lastname: $("#lastname").val(),
+            email: $("#email").val()
+          },
+          success: function(data) {
+            if (data.code == 200) 
+              alert(data.message);
+            else
+              alert(data.code + ':' + data.message);
+          },
+          error: function(r, h, s) {
+            alert(r.responseText);
+          }
+        })
+	    }
+	  });
+	});
+</script>
+{% endblock %}
