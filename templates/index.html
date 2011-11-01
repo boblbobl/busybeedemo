@@ -1,379 +1,253 @@
-<!DOCTYPE html>
-
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
-<head>
-	<meta charset="utf-8" />
-	
-	<!-- Set the viewport width to device width for mobile -->
-	<meta name="viewport" content="width=device-width" />
-	
-	<title>Online Scheduling has never been this Easy | BusyBeeManager</title>
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block body %}
+<div id="myModal" class="reveal-modal">
+  <h3>Login</h3>
+  <p>When you registered for BusyBeeManager, we sent you a welcome email with your private URL.</p>
+  <p>You need to go to this unique web address to login to your account. If you have trouble locating this email from us, we can find it for you.</p>
+  <p>Enter your email address and we’ll send you the account(s) associated with it.</p>
+  <form class="nice">
+    <input type="text" class="input-text" placeholder="youremail@address.com" /><a href="#" class="small radius charcoal button">Remind Me</a>
+  </form>
   
-	<!-- Included CSS Files -->
-	<!-- These files are being included - to omit files, move them to the block below. -->
+  <a class="close-reveal-modal">&#215;</a>
+</div>
 
-	<link rel="stylesheet" href="/static/css/globals.css">
-	<link rel="stylesheet" href="/static/css/ui.css">
-	<link rel="stylesheet" href="/static/css/forms.css">
-	<link rel="stylesheet" href="/static/css/orbit.css">
-	<link rel="stylesheet" href="/static/css/reveal.css">
-	<link rel="stylesheet" href="/static/css/app.css">
-	<link rel="stylesheet" href="/static/css/mobile.css">
-	
-	<link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
-
-	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="public/css/ie.css">
-	<![endif]-->
-
-	<!-- These files are not being included.
-	
-		# <link rel="stylesheet" href="public/css/example.css">
-		# 
-		# 
-		# 
-	
-	-->
-	
-	<!-- IE Fix for HTML5 Tags -->
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-</head>
-<body>
-  
-  <div id="myModal" class="reveal-modal">
-    <h3>Login</h3>
-    <p>When you registered for BusyBeeManager, we sent you a welcome email with your private URL.</p>
-    <p>You need to go to this unique web address to login to your account. If you have trouble locating this email from us, we can find it for you.</p>
-    <p>Enter your email address and we’ll send you the account(s) associated with it.</p>
-    <form class="nice">
-      <input type="text" class="input-text" placeholder="youremail@address.com" /><a href="#" class="small radius charcoal button">Remind Me</a>
-    </form>
-    
-    <a class="close-reveal-modal">&#215;</a>
-  </div>
-  
-  <!-- Top Bar -->
-  <div id="top" class="container">
-    <div class="row">
-      <div class="eight columns">
-        <img id="logo" src="/static/images/logo_white.png" />
-      </div>
-      <div id="nav" class="four columns hide-on-phones">
-        <a href="#login" class="small radius white button right" data-reveal-id="myModal">Login</a>
-        <a href="#" class="small radius blue button right" >Sign up</a> 
+<!-- Teaser -->
+<div id="teaser" class="container">
+  <div class="row">
+    <div class="six columns center">
+      <h1>Online Scheduling has never been this Easy</h1>
+      <p>
+        This web application has forever transformed the way managers of small businesses such as cafes, restaurants, bars, shops and even pet service centers maintain work schedules and rosters.
+      </p>
+      <a id="sign-up" href="#" class="nice large radius button">Sign up today for 30-day free trial</a>
+      <p>or use our <a href="#">free</a> limited plan option</p>
+    </div>
+    <div class="six columns">
+      <div id="monitor-wrapper">
+        <img id="monitor" src="/static/images/monitor.png" />
+        <a href="#"><img id="screen" src="/static/images/screen.png" /></a>
       </div>
     </div>
   </div>
+</div>
+
+
+<!-- Main Content -->
+<div id="main" class="container">
   
-  <!-- Teaser -->
-  <div id="teaser" class="container">
-    <div class="row">
-      <div class="six columns center">
-        <h1>Online Scheduling has never been this Easy</h1>
-        <p>
-          This web application has forever transformed the way managers of small businesses such as cafes, restaurants, bars, shops and even pet service centers maintain work schedules and rosters.
-        </p>
-        <a id="sign-up" href="#" class="nice large radius button">Sign up today for 30-day free trial</a>
-        <p>or use our <a href="#">free</a> limited plan option</p>
-      </div>
-      <div class="six columns">
-        <div id="monitor-wrapper">
-          <img id="monitor" src="/static/images/monitor.png" />
-          <a href="#"><img id="screen" src="/static/images/screen.png" /></a>
-        </div>
-      </div>
+  <div id="highlights" class="row">
+    <div class="four columns">
+      <h4>Save Time</h4>
+      <p>
+        Cut employee scheduling time by 90% and spend your time making money instead of fiddling with pen and paper. The days of manual employee scheduling or messing with your own Excel systems are over. BusyBeeManager is here to help.
+      </p>
+    </div>
+    <div class="four columns">
+      <h4>Automatic</h4>
+      <p>
+        Complete your employee shift schedules in a few seconds. Easy-to-create templates and the auto-assign functionality give you a week's schedule with just one click.
+      </p>
+    </div>
+    <div class="four columns">
+      <h4>Fool Proof</h4>
+      <p>
+        Avoid 'no shows' by making error free employee schedules with just one click. Keep track of employees' work days and agreed working hours. When are they on vacation? Which days can they work? BusyBeeManager can keep track of this for you.
+      </p>
     </div>
   </div>
-
-
-	<!-- Main Content -->
-	<div id="main" class="container">
-	  
-	  <div id="highlights" class="row">
-      <div class="four columns">
-        <h4>Save Time</h4>
-        <p>
-          Cut employee scheduling time by 90% and spend your time making money instead of fiddling with pen and paper. The days of manual employee scheduling or messing with your own Excel systems are over. BusyBeeManager is here to help.
-        </p>
-      </div>
-      <div class="four columns">
-        <h4>Automatic</h4>
-        <p>
-          Complete your employee shift schedules in a few seconds. Easy-to-create templates and the auto-assign functionality give you a week's schedule with just one click.
-        </p>
-      </div>
-      <div class="four columns">
-        <h4>Fool Proof</h4>
-        <p>
-          Avoid 'no shows' by making error free employee schedules with just one click. Keep track of employees' work days and agreed working hours. When are they on vacation? Which days can they work? BusyBeeManager can keep track of this for you.
-        </p>
-      </div>
-    </div>
-    
-	  <div class="row">
-	    <div class="six columns">
-				<h4>Tante T, Tea Salon</h4>
-				<img src="/static/images/reference-1.png" class="right">
-				<blockquote>
-				  Employee Scheduling used to be 
-          like a big jigsaw puzzle - thanks 
-          to BusyBeeManager - it's almost 
-          automatic now. I'll never go back 
-          to the old Excel-sheet again.
-				</blockquote>
-				<p>
-				  The Copenhagen based Tea Salon Tante-T (Tante T translates to Auntie Tea) 
-          has been a long time customer for BusyBeeManager - we interviewed owner 
-          Mette-Maria Viscor on how they use the application for their employee 
-          scheduling.
-				</p>
-				<p>
-				  Read the full interview <a href="#">here</a>.
-				</p>
-			</div>
-			<div class="six columns">
-				<h4>Acquisitions, Retail Gift Store</h4>
-				<img src="/static/images/reference-2.png" class="right">
-				<blockquote>
-				  We only have 6 staff in this store, but all but one are on 
-          part-time hours, and they all have times they are or are 
-          not available. Keeping track of when staff can work and 
-          can’t can be quite time consuming. 
-          Thanks to BusyBeeManager - that’s a lot easier now.
-				</blockquote>
-				<p>
-				  We recently did a small interview with retail gift store Acquisitions from Timaru, New Zealand. 
-				  Acquisitions have been with BusyBeeManager since autumn 2009.
-				</p>
-				<p>
-				  Read the full interview <a href="#">here</a>.
-				</p>
-			</div>
+  
+  <div class="row">
+    <div class="six columns">
+			<h4>Tante T, Tea Salon</h4>
+			<img src="/static/images/reference-1.png" class="right">
+			<blockquote>
+			  Employee Scheduling used to be 
+        like a big jigsaw puzzle - thanks 
+        to BusyBeeManager - it's almost 
+        automatic now. I'll never go back 
+        to the old Excel-sheet again.
+			</blockquote>
+			<p>
+			  The Copenhagen based Tea Salon Tante-T (Tante T translates to Auntie Tea) 
+        has been a long time customer for BusyBeeManager - we interviewed owner 
+        Mette-Maria Viscor on how they use the application for their employee 
+        scheduling.
+			</p>
+			<p>
+			  Read the full interview <a href="#">here</a>.
+			</p>
+		</div>
+		<div class="six columns">
+			<h4>Acquisitions, Retail Gift Store</h4>
+			<img src="/static/images/reference-2.png" class="right">
+			<blockquote>
+			  We only have 6 staff in this store, but all but one are on 
+        part-time hours, and they all have times they are or are 
+        not available. Keeping track of when staff can work and 
+        can’t can be quite time consuming. 
+        Thanks to BusyBeeManager - that’s a lot easier now.
+			</blockquote>
+			<p>
+			  We recently did a small interview with retail gift store Acquisitions from Timaru, New Zealand. 
+			  Acquisitions have been with BusyBeeManager since autumn 2009.
+			</p>
+			<p>
+			  Read the full interview <a href="#">here</a>.
+			</p>
+		</div>
+  </div>
+	
+	<div class="row">
+	  <div class="twelve columns">
+	    <p class="center">
+        Some of the companies we are proud to have as customers:
+      </p>
+	    <div id="logos" class="panel center">
+	      <img src="/static/images/clients.png" style="margin-top: 10px" />
+	    </div>
 	  </div>
-		
-		<div class="row">
-		  <div class="twelve columns">
-		    <div id="logos" class="panel center">
-		      <img src="/static/images/clients_greyscale.png" style="margin-top: 10px" />
-		    </div>
-		  </div>
-		</div>
-		
-		<div class="row">
-			<div id="features" class="four columns">
-				<h5>This is Why!</h5>
-        <ul>
-          <li>
-            <h6>Easy to Use</h6>
-            <p>
-              BusyBeeManager is all about planning employee schedules and roosters; easily and quickly.
-            </p>
-          </li>
-          <li>
-            <h6>Nothing to Install</h6>
-            <p>
-              With BusyBeeManager you'll get a unique web address for your account, which you can easily access anywhere without having to install anything.
-            </p>
-          </li>
-          <li>
-            <h6>Try it out for Free</h6>
-            <p>
-              Get a free 30-day trial, and if you like what you see, you can sign up for as little as $10/month. No long term contracts and pay as you go.
-            </p>
-          </li>
-          <li>
-            <h6>Reliable and Fast</h6>
-            <img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif" 
+	</div>
+	
+	<div class="row">
+		<div id="features" class="four columns">
+			<h5>This is Why!</h5>
+      <ul>
+        <li>
+          <h6>Easy to Use</h6>
+          <p>
+            BusyBeeManager is all about planning employee schedules and roosters; easily and quickly.
+          </p>
+        </li>
+        <li>
+          <h6>Nothing to Install</h6>
+          <p>
+            With BusyBeeManager you'll get a unique web address for your account, which you can easily access anywhere without having to install anything.
+          </p>
+        </li>
+        <li>
+          <h6>Try it out for Free</h6>
+          <p>
+            Get a free 30-day trial, and if you like what you see, you can sign up for as little as $10/month. No long term contracts and pay as you go.
+          </p>
+        </li>
+        <li>
+          <h6>Reliable and Fast</h6>
+          <img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif" 
 alt="Powered by Google App Engine" class="right" />
-            <p>
-              BusyBeeManager runs on top of Google-built infrastructure that has proven itself very reliable and fast.
-            </p>
-            
-          </li>
-        </ul>
-			</div>
-			
-			<div class="eight columns">
-				<table id="upgrade">
-          <thead>
-            <tr>
-              <th></th>
-              <th><h5>Plus Plan</h5>$15 <sup>month</sup></th>
-              <th><h5>Basic Plan</h5>$10 <sup>month</sup></th>
-              <th><h5>Free Plan</h5></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="left">Employees</span></td>
-              <td>Unlimited</td>
-              <td>15</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <td><span class="left">Job Roles</span></td>
-              <td>Unlimited</td>
-              <td>4</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <td><span class="left">Auto Generate Schedule</span></td>
-              <td>Yes</td>
-              <td>Yes</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td><span class="left">Schedule Templates</span></td>
-              <td>Yes</td>
-              <td>Yes</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td><span class="left">Publish Schedule for E-mail and Print</span></td>
-              <td>Yes</td>
-              <td>Yes</td>
-              <td>No</td>
-            </tr>
-            <tr>
-              <td><span class="left">Register Available Weekdays for Employees</span></td>
-              <td>Yes</td>
-              <td>Yes</td>
-              <td>No</td>
-            </tr>
-            <tr>
-              <td><span class="left">Work with Multiple Departments</span></td>
-              <td>Yes</td>
-              <td>No</td>
-              <td>No</td>
-            </tr>
-            <tr>
-              <td><span class="left">Register Days Off for Employees</span></td>
-              <td>Yes</td>
-              <td>No</td>
-              <td>No</td>
-            </tr>
-          </tbody>
-        </table>
-			</div>
+          <p>
+            BusyBeeManager runs on top of Google-built infrastructure that has proven itself very reliable and fast.
+          </p>
+        </li>
+        <li>
+          <h6>Selling Point 5</h6>
+          <p>
+            Here is an extra selling point to fill in the empty space. Here is an extra selling point to fill in the empty space.
+          </p>
+        </li>
+      </ul>
 		</div>
 		
-		<div class="row">
-		  <div class="twelve columns">
-		    <h4>See it in Action</h4>
-		    <hr />
-		  </div>
-		</div>
-		<div class="row" style="margin-top: -30px;">
-		  <div class="three columns center">
-		    <img src="/static/images/screencast.png" /><br />
-		    Automatic Employee Scheduling
-		  </div>
-		  <div class="three columns center">
-		    <img src="/static/images/screencast.png" /><br />
-		    Define Staffing Needs
-		  </div>
-		  <div class="three columns center">
-		    <img src="/static/images/screencast.png" /><br />
-		    Manage Employees
-		  </div>
-		  <div class="three columns center">
-		    <img src="/static/images/screencast.png" /><br />
-		    Save Schedules as Templates
-		  </div>
+		<div class="eight columns">
+			<table id="upgrade">
+        <thead>
+          <tr>
+            <th></th>
+            <th><h5>Plus Plan</h5>$15 <sup>month</sup></th>
+            <th><h5>Basic Plan</h5>$10 <sup>month</sup></th>
+            <th><h5>Free Plan</h5></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td><a href="/signup/plus">Sign up</a></td>
+            <td><a href="/signup/basic">Sign up</a></td>
+            <td><a href="/signup/free">Sign up</a></td>
+          </tr>
+          <tr>
+            <td><span class="left">Employees</span></td>
+            <td>Unlimited</td>
+            <td>15</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td><span class="left">Job Roles</span></td>
+            <td>Unlimited</td>
+            <td>4</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td><span class="left">Auto Generate Schedule</span></td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><span class="left">Schedule Templates</span></td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><span class="left">Publish Schedule for E-mail and Print</span></td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><span class="left">Register Available Weekdays for Employees</span></td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><span class="left">Work with Multiple Departments</span></td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><span class="left">Register Days Off for Employees</span></td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><a href="/signup/plus">Sign up</a></td>
+            <td><a href="/signup/basic">Sign up</a></td>
+            <td><a href="/signup/free">Sign up</a></td>
+          </tr>
+        </tbody>
+      </table>
 		</div>
 	</div>
 	
-	<!-- Footer -->
-	
-	<div id="footer" class="container">
-    <div class="row">
-      <div class="four columns">
-        <h5>Subscribe to our Newsletter</h5>
-        <p>
-          Hear about new features, promos, discounts and more. 
-          Subscribe to our periodic newsletters.
-        </p>
-        <form class="nice">
-          <input type="text" class="input-text" placeholder="youremail@address.com" />
-        </form>
-        <p>
-          Enter your e-mail address and press enter.  
-        </p>
-        <p>
-          You can always unsubscribe the newsletter.
-        </p>
-      </div>
-      <div class="four columns">
-        <h5>Recent posts from our Blog</h5>
-        <h6><a href="#">Employee Scheduling For New Managers</a></h6>
-        <p class="blogpost">
-          There is nothing more intimidating to a new manager than 
-          completing that employee schedule for the first time...
-        </p>
-        <h6><a href="#">Retail Employee Scheduling – Case Story</a></h6>
-        <p class="blogpost">
-          We recently did a small interview with retail gift store 
-          Acquisitions from Timaru, New Zealand...
-        </p>
-        <p>
-          <a href="#">See all blog posts</a>
-        </p>
-      </div>
-      <div class="four columns">
-        <h5>Heard on Twitter</h5>
-        <p class="tweet">
-          Check out our new automatic employee scheduling tutorial. #busybee - @busybee
-        </p>
-        <p class="tweet">
-          The new version of #busybee is soon to be released. - @busybee
-        </p>
-        <p class="tweet">
-          #busybee is the best online scheduling software out there - @propellerhead
-        </p>
-        <p>
-          <a href="#">Follow us on twitter</a>
-        </p>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="twelve columns center">
-		    <img id="footer-logo" src="/static/images/logo_white.png" />
-		    <p class="copyright">
-		      &copy; 2011 BusyBeeManager. All Rights Reserved.
-		    </p>
-		  </div>
-    </div>
-  </div>
-	
-	
-
-
-	<!-- Included JS Files  -->
-	<!-- These files are being included - to omit files, move them to the block below. -->
-
-	<script src="/static/js/jquery-1.5.1.min.js"></script>
-	<script src="/static/js/jquery.reveal.js"></script>
-	<script src="/static/js/jquery.orbit-1.3.0.js"></script>
-	<script src="/static/js/forms.jquery.js"></script>
-	<script src="/static/js/jquery.customforms.js"></script>
-	<script src="/static/js/jquery.placeholder.js"></script>
-	<script src="/static/js/app.js"></script>
-	
-	
-	<!-- These files are not being included.
-		# <script src="public/js/example.js"></script>
-		# 
-		# 
-		# 
-	-->
-	
-</body>
-</html>
+	<div class="row">
+	  <div class="twelve columns">
+	    <h4>See it in Action</h4>
+	    <hr />
+	  </div>
+	</div>
+	<div class="row" style="margin-top: -30px;">
+	  <div class="three columns center">
+	    <img src="/static/images/screencast.png" /><br />
+	    Automatic Employee Scheduling
+	  </div>
+	  <div class="three columns center">
+	    <img src="/static/images/screencast.png" /><br />
+	    Define Staffing Needs
+	  </div>
+	  <div class="three columns center">
+	    <img src="/static/images/screencast.png" /><br />
+	    Manage Employees
+	  </div>
+	  <div class="three columns center">
+	    <img src="/static/images/screencast.png" /><br />
+	    Save Schedules as Templates
+	  </div>
+	</div>
+</div>
+{% endblock %}

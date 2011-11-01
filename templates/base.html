@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Online Scheduling has never been this Easy | BusyBeeManager</title>
+	<link rel="stylesheet" href="/static/css/globals.css">
+	<link rel="stylesheet" href="/static/css/ui.css">
+	<link rel="stylesheet" href="/static/css/forms.css">
+	<link rel="stylesheet" href="/static/css/orbit.css">
+	<link rel="stylesheet" href="/static/css/reveal.css">
+	<link rel="stylesheet" href="/static/css/app.css">
+	<link rel="stylesheet" href="/static/css/mobile.css">
+	<link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="public/css/ie.css">
+	<![endif]-->
+	
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+  <!-- Top Bar -->
+  <div id="top" class="container">
+    <div class="row">
+      <div class="eight columns">
+        <img id="logo" src="/static/images/logo_white.png" />
+      </div>
+      <div id="nav" class="four columns hide-on-phones">
+        <a href="#login" class="small radius white button right" data-reveal-id="myModal">Login</a>
+        <a href="#" class="small radius blue button right" >Sign up</a> 
+      </div>
+    </div>
+  </div>
+  
+  {% block body %}{% endblock %}
+  
+	<!-- Footer -->
+	<div id="footer" class="container">
+    <div class="row">
+      <div class="four columns">
+        <h5>Subscribe to our Newsletter</h5>
+        <p>
+          Hear about new features, promos, discounts and more. 
+          Subscribe to our periodic newsletters.
+        </p>
+        <form class="nice">
+          <input type="text" class="input-text" placeholder="youremail@address.com" />
+        </form>
+        <p>
+          Enter your e-mail address and press enter.  
+        </p>
+        <p>
+          You can always unsubscribe the newsletter.
+        </p>
+      </div>
+      <div class="four columns">
+        <h5>Recent posts from our Blog</h5>
+        <h6><a href="#">Employee Scheduling For New Managers</a></h6>
+        <p class="blogpost">
+          There is nothing more intimidating to a new manager than 
+          completing that employee schedule for the first time...
+        </p>
+        <h6><a href="#">Retail Employee Scheduling – Case Story</a></h6>
+        <p class="blogpost">
+          We recently did a small interview with retail gift store 
+          Acquisitions from Timaru, New Zealand...
+        </p>
+        <p>
+          <a href="#">See all blog posts</a>
+        </p>
+      </div>
+      <div class="four columns">
+        <h5>Heard on Twitter</h5>
+        <p class="tweet">
+          Check out our new automatic employee scheduling tutorial. #busybee - @busybee
+        </p>
+        <p class="tweet">
+          The new version of #busybee is soon to be released. - @busybee
+        </p>
+        <p class="tweet">
+          #busybee is the best online scheduling software out there - @propellerhead
+        </p>
+        <p>
+          <a href="#">Follow us on twitter</a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="twelve columns center">
+		    <img id="footer-logo" src="/static/images/logo_white.png" />
+		    <p class="copyright">
+		      &copy; 2011 BusyBeeManager. All Rights Reserved.
+		    </p>
+		  </div>
+    </div>
+  </div>
+	
+	
+
+
+	<!-- Included JS Files  -->
+	<!-- These files are being included - to omit files, move them to the block below. -->
+
+	<script src="/static/js/jquery-1.5.1.min.js"></script>
+	<script src="/static/js/jquery.reveal.js"></script>
+	<script src="/static/js/jquery.orbit-1.3.0.js"></script>
+	<script src="/static/js/forms.jquery.js"></script>
+	<script src="/static/js/jquery.customforms.js"></script>
+	<script src="/static/js/jquery.placeholder.js"></script>
+	<script src="/static/js/app.js"></script>
+	
+	
+	<!-- These files are not being included.
+		# <script src="public/js/example.js"></script>
+		# 
+		# 
+		# 
+	-->
+	
+</body>
+</html>
