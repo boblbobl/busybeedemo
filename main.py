@@ -31,8 +31,10 @@ class MainHandler(webapp.RequestHandler):
     page_name = self.get_page_name(path)
     action = self.get_action(path)
 
-    if page_name.lower() == 'signup':
+    if page_name == 'signup':
       template_page = os.path.join(os.path.dirname(__file__), 'templates/signup.html')
+    elif page_name == 'terms':
+      template_page = os.path.join(os.path.dirname(__file__), 'templates/terms.html')
     else:
       template_page = os.path.join(os.path.dirname(__file__), 'templates/index.html')
     

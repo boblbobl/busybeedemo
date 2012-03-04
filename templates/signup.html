@@ -1,82 +1,128 @@
 {% extends "base.html" %}
+{% block title %}Sign up{% endblock %}
 {% block body %}
-<form id="signup-form" class="nice">
+<div id="congrats" class="reveal-modal">
+     <h2>Congratulation</h2>
+     <p class="lead">You've created your very own BusyBeeManager account.</p>
+     <p>We've send you an e-mail with login information.</p>
+     <a id="account-url" href="#" class="radius green button right">Take me to my BusyBeeManager account</a>
+</div>
+<!-- Main Content -->
+<div id="main" class="container">
+
+  <form id="signup-form" class="nice" autocomplete="off">
   
-  <div class="row">
-    <div class="twelve columns">
-      <h1>Sign up</h1>
-      <p>       
-        Please input a few details, and you will be good to go!<br />
-        All fields are mandatory.
-      </p>      
+    <div class="row">
+      <div class="twelve columns">
+        <h1>Sign up</h1>
+        <h4 class="subheader">Please input a few details, and you will be good to go!</h4>    
+      </div>
     </div>
-  </div>
   
-  <div class="row">
-    <div class="four columns">
+    <div class="row">
+      <div class="four columns">
       
-      <h4>Personal Details</h4>
-      <p>
-        <label for="firstname">First Name(s)</label>
-        <input id="firstname" name="firstname" type="text" class="required input-text" />
-        <label for="lastname">Last Name</label>
-        <input id="lastname" name="lastname" type="text" class="required input-text" />
-        <label for="email">E-mail</label>
-        <input id="email" name="email" type="text" class="required email input-text" />
-        <label for="confirmemail">Confirm E-mail</label>
-        <input id="confirmemail" name="confirmemail" type="text" class="input-text" />
-      </p>
+        <h4>Personal Details</h4>
+        <p>
+          <label for="firstname">First Name(s)</label>
+          <input id="firstname" name="firstname" type="text" class="required input-text" spellcheck="false" />
+          <label for="lastname">Last Name</label>
+          <input id="lastname" name="lastname" type="text" class="required input-text" spellcheck="false" />
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="text" class="required email input-text" spellcheck="false" />
+          <label for="confirmemail">Confirm E-mail</label>
+          <input id="confirmemail" name="confirmemail" type="text" class="input-text" spellcheck="false" />
+        </p>
+      </div>
+      <div class="four columns">
+        <h4>Company Name and URL</h4>
+        <p>
+          <label for="name">Company or Group Name</label>
+          <input id="name" name="name" type="text" class="required input-text" spellcheck="false" />
+        </p>
+        <p>
+          <label for="url">Address to Your Account</label>
+          <input id="url" name="url" type="text" class="required input-text" spellcheck="false" />
+        </p>
+        <p>
+          http://<strong><span id="subdomain"></span></strong>.busybeehq.com
+        </p>
+      </div>
+      <div class="four columns">
+        <h4>Terms and Conditions</h4>
+        <p>
+          When you sign up and create an account, you sign up to our Free plan.
+        </p>
+        <p>
+          If you want to enable features that are part of our paying plans, you can upgrade to those within the application.
+        </p>
+        <p>
+          <input id="terms" name="terms" type="checkbox" /> I agree with the <a href="/terms">Terms and Conditions</a>
+        </p>
+        <input id="btn-signup" type="button" disabled="disabled" value="Create Account" class="large radius black button right" />
+      </div>
     </div>
-    <div class="four columns">
-      <h4>Company Name and Address</h4>
-      <p>
-        <label for="name">Company or Group Name</label>
-        <input id="name" name="name" type="text" class="required input-text" />
-      </p>
-      <p>
-        <label for="url">Address to Your Account</label>
-        <strong>http://</strong><input id="url" name="url" type="text" class="required input-text" /><strong>.busybeehq.com</strong>
-      </p>
-    </div>
-    <div class="four columns">
-      <h4>Billing</h4>
-      <ul>
-        <li>We do not require and credit card information to get you started.</li>
-        <li>It is only if you decide to keep your account for more than 30 days, that we will ask you to pay.</li>
-      </ul>
-      <p>
-        <strong>Product:</strong>
-        Plus ($15)
-      </p>
-      <p>
-        <input id="terms" name="terms" type="checkbox" /> I agree with the <a href="#">Terms and Conditions</a>
-      </p>
-      <a href="#sign-up" id="btn-signup" class="large radius charcoal button right">Create Account</a>
-      <!-- input id="btn-signup" type="button" disabled="disabled" value="Sign up" class="small radius charcoal button right" / -->
     
+    <div class="row">
+      <div class="twelve columns">
+        <p>
+          <em>All fields are mandatory.</em>
+        </p>
+      </div>
     </div>
-  </div>
-</form>
+    
+  </form>
 
+</div>
+{% endblock %}
 
-<script type="text/javascript" src="http://static.busybeehq.com/static/js/jquery.validate.js"></script>
+{% block script %}
+<script type="text/javascript" src="/static/js/jquery.alphanumeric.js"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
 <script type="text/javascript"> 
 	$(function() {
-	  //jQuery.validator.messages.required = '';
+	  var subdomainEmptyText = '[your address]';
+	  $("#subdomain").html(subdomainEmptyText);
 	  
-	  $("#signup-form").validate({
+    $("#signup-form").validate({
+      errorElement: "small",
+      onkeyup: false,
+      onfocusout: false,
       messages: {
+        confirmemail: {
+          equalTo: "Please enter your e-mail again."
+        },
         url: {
-          required: ""
+          remote: "Address is taken. Please try another."
         }
       },
       rules: {
-        email: "required",
-        confirmemail: "required",
         confirmemail: {
           equalTo: "#email"
+        },
+        url: {
+          remote: "/api/checkname"
         }
       }
+    });
+    
+    $("#url").alphanumeric({
+      nocaps: true,
+      ichars: '§€<>.,æøåÆØÅ '
+    });
+    
+    $("#url").keypress(function(e){      
+      if ($(this).val().length < 20)
+        return true;
+      else
+        return false;
+    })
+    
+    $("#url").keyup(function() {
+      $("#subdomain").html($(this).val());
+      
+      if ($(this).val() == '')
+        $("#subdomain").html(subdomainEmptyText);
     });
 	  
 	  $("input#terms").click(function(){
@@ -88,11 +134,10 @@
 	  
 	  $("input#btn-signup").click(function(){
 	    if ($("#signup-form").valid()) {
-	      $("input#btn-signup").attr('disabled', 'disabled');
 	      
 	      $.ajax({
           url: 'http://static.busybeehq.com/api/json?method=busybee.account.signup',
-          dataType: 'json',
+          dataType: 'jsonp',
           data: {
             name: $("#url").val(),
             companyname: $("#name").val(),
@@ -101,13 +146,18 @@
             email: $("#email").val()
           },
           success: function(data) {
-            if (data.code == 200) 
-              alert(data.message);
+            if (data.code == 200) {
+              $("#account-url").attr('href','http://' + $("#url").val() + '.busybeehq.com');
+
+        	    $("#congrats").reveal({
+                closeOnBackgroundClick: false
+        	    });
+            }
             else
-              alert(data.code + ':' + data.message);
+              alert("!!!success!!!");
           },
-          error: function(r, h, s) {
-            alert(r.responseText);
+          error: function() {
+            alert("!!!error!!!");
           }
         })
 	    }
@@ -115,3 +165,6 @@
 	});
 </script>
 {% endblock %}
+
+
+

@@ -7,19 +7,15 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
-	<title>Online Scheduling has never been this Easy | BusyBeeManager</title>
-	<link rel="stylesheet" href="/static/css/globals.css">
-	<link rel="stylesheet" href="/static/css/ui.css">
-	<link rel="stylesheet" href="/static/css/forms.css">
-	<link rel="stylesheet" href="/static/css/orbit.css">
-	<link rel="stylesheet" href="/static/css/reveal.css">
+	<title>{% block title %}Employee Scheduling has never been this Easy{% endblock %} | BusyBeeManager</title>
+	
+	<link rel="stylesheet" href="/static/css/foundation.css">
 	<link rel="stylesheet" href="/static/css/app.css">
-	<link rel="stylesheet" href="/static/css/mobile.css">
 	
 	<link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="/static/images/favicon.png" />
 	<!--[if lt IE 9]>
-		<link rel="stylesheet" href="public/css/ie.css">
+		<link rel="stylesheet" href="/static/css/ie.css">
 	<![endif]-->
 	
 	<!-- IE Fix for HTML5 Tags -->
@@ -29,7 +25,7 @@
 </head>
 <body>
   <!-- Login Modal -->
-  <div id="myModal" class="reveal-modal">
+  <div id="login-modal" class="reveal-modal">
     <h3>Login</h3>
     <p>When you registered for BusyBeeManager, we sent you a welcome email with your private URL.</p>
     <p>You need to go to this unique web address to login to your account. If you have trouble locating this email from us, we can find it for you.</p>
@@ -45,11 +41,13 @@
   <div id="top" class="container">
     <div class="row">
       <div class="eight columns">
-        <img id="logo" src="/static/images/logo_white.png" />
+        <a href="/">
+          <img id="logo" src="/static/images/logo_white.png" />
+        </a>
       </div>
       <div id="nav" class="four columns hide-on-phones">
-        <a href="#login" class="small radius white button right" data-reveal-id="myModal">Login</a>
-        <a href="#" class="small radius blue button right" >Sign up</a> 
+        <a href="#login" class="small radius white button right" data-reveal-id="login-modal">Login</a>
+        <a href="/signup" class="small radius blue button right">Sign up</a> 
       </div>
     </div>
   </div>
@@ -66,7 +64,7 @@
           Subscribe to our periodic newsletters.
         </p>
         <form class="nice">
-          <input type="text" class="input-text" placeholder="youremail@address.com" />
+          <input type="text" class="input-text" placeholder="youremail@address.com" tabindex="-1" />
         </form>
         <p>
           Enter your e-mail address and press enter.  
@@ -112,7 +110,7 @@
       <div class="twelve columns center">
 		    <img id="footer-logo" src="/static/images/logo_white.png" />
 		    <p class="copyright">
-		      &copy; 2011 BusyBeeManager. All Rights Reserved.
+		      &copy; 2012 BusyBeeManager. All Rights Reserved.
 		    </p>
 		  </div>
     </div>
@@ -121,24 +119,11 @@
 	
 
 
-	<!-- Included JS Files  -->
-	<!-- These files are being included - to omit files, move them to the block below. -->
-
-	<script src="/static/js/jquery-1.5.1.min.js"></script>
-	<script src="/static/js/jquery.reveal.js"></script>
-	<script src="/static/js/jquery.orbit-1.3.0.js"></script>
-	<script src="/static/js/forms.jquery.js"></script>
-	<script src="/static/js/jquery.customforms.js"></script>
-	<script src="/static/js/jquery.placeholder.js"></script>
+	<!-- Included JS Files -->
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/modernizr.foundation.js"></script>
+	<script src="/static/js/foundation.js"></script>
 	<script src="/static/js/app.js"></script>
-	
-	
-	<!-- These files are not being included.
-		# <script src="public/js/example.js"></script>
-		# 
-		# 
-		# 
-	-->
-	
+	{% block script %}{% endblock %}
 </body>
 </html>

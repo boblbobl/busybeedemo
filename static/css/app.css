@@ -4,7 +4,7 @@
    Table of Contents
 -----------------------------------------------------
 :: Shared Styles
-:: Page Name 1
+:: Frontpage
 :: Page Name 2
 */
 
@@ -12,6 +12,19 @@
 /* -----------------------------------------
    Shared Styles
 ----------------------------------------- */
+
+h1 {
+  margin-top: 60px;
+}
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+textarea {
+  resize: none;
+}
 
 #top {
   height: 50px;
@@ -29,41 +42,8 @@
   margin-left: 10px;
 }
 
-#teaser {
-  background-image: url(/static/images/whitey.png);
-  background-repeat: repeat-x;
-  border-bottom: solid 1px #999;
-}
-
-#teaser .row {
-  background-image: url(/static/images/backlight.png);
-  background-repeat: no-repeat;
-}
-
-#teaser h1 {
-  margin-top: 40px;
-  color: #444;
-  font-family: 'Rock Salt', cursive;
-  font-size: 32px; 
-  font-size: 3.2rem;
-  /*text-shadow: #666 1px 1px 1px;*/
-}
-
-#teaser #monitor-wrapper {
-  position: relative;
-  width: 437px;
-  height: 347px;
-  margin: 10px auto 10px auto;
-}
-
-#teaser #monitor-wrapper #screen {
-  position: absolute;
-  top: 20px;
-  left: 18px;
-}
-
-#teaser a#sign-up {
-  margin-bottom: 20px;
+#main {
+  min-height: 480px;
 }
 
 #footer {
@@ -107,6 +87,46 @@
   margin-top: 50px;
 }
 
+/* -----------------------------------------
+   Frontpage
+----------------------------------------- */
+
+#teaser {
+  background-image: url(/static/images/whitey.png);
+  background-repeat: repeat-x;
+  border-bottom: solid 1px #999;
+}
+
+#teaser .row {
+  background-image: url(/static/images/backlight.png);
+  background-repeat: no-repeat;
+}
+
+#teaser h1 {
+  margin-top: 40px;
+  color: #444;
+  font-family: 'Rock Salt', cursive;
+  font-size: 28px; 
+  font-size: 3.0rem;
+}
+
+#teaser #monitor-wrapper {
+  position: relative;
+  width: 437px;
+  height: 347px;
+  margin: 10px auto 10px auto;
+}
+
+#teaser #monitor-wrapper #screen {
+  position: absolute;
+  top: 20px;
+  left: 18px;
+}
+
+#teaser a#sign-up {
+  margin-bottom: 20px;
+}
+
 #main #highlights h4 {
   font-family: 'Rock Salt', cursive;
   font-size: 24px; 
@@ -135,37 +155,29 @@
   font-size: smaller;
   margin-bottom: -8px;
 }
-/*
-#main #features ul {
-  list-style-image:url(/static/images/checkmark.png);
-}
-*/
-#main #features ul li {
 
-padding-left:40px;
-background-image:url(/static/images/checkmark.png);
-background-repeat:no-repeat;
-background-position: 5px 0px;
+#main #features ul li {
+  padding-left:40px;
+  background-image:url(/static/images/checkmark.png);
+  background-repeat:no-repeat;
+  background-position: 5px 0px;
+}
+
+#main table#upgrade th.col0 {
+  width: 40%;
+}
+
+#main table#upgrade th.col1-3 {
+  width: 20%;
+}
+
+#main table#upgrade td {
+  text-align: center;
 }
 
 .center {
   text-align: center;
 }
-
-sup {
-  vertical-align: super;
-  font-size: smaller;
-}
-
-
-
-/* -----------------------------------------
-   Page Name 1
------------------------------------------ */
-
-
-
-
 
 
 /* -----------------------------------------
