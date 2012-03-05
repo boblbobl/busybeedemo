@@ -87,6 +87,10 @@ li {
   font-size: smaller;
 }
 
+#footer p.copyright a {
+  text-decoration: none;
+}
+
 #footer img#footer-logo {
   margin-top: 50px;
 }
