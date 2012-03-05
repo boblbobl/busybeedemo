@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Sign up{% endblock %}
 {% block body %}
-<div id="congrats" class="reveal-modal">
+<div id="congrats-modal" class="reveal-modal">
      <h2>Congratulation</h2>
      <p class="lead">You've created your very own BusyBeeManager account.</p>
      <p>We've send you an e-mail with login information.</p>
@@ -78,7 +78,6 @@
 
 {% block script %}
 <script type="text/javascript" src="/static/js/jquery.alphanumeric.js"></script>
-<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
 <script type="text/javascript"> 
 	$(function() {
 	  var subdomainEmptyText = '[your address]';
@@ -149,7 +148,7 @@
             if (data.code == 200) {
               $("#account-url").attr('href','http://' + $("#url").val() + '.busybeehq.com');
 
-        	    $("#congrats").reveal({
+        	    $("#congrats-modal").reveal({
                 closeOnBackgroundClick: false
         	    });
             }

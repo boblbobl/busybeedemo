@@ -7,6 +7,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
+	<meta name="description" content="{% block description %}Learn the secret of building employee schedules with the best scheduling tool. Save 90% of your scheduling time and keep employees and customers happy. Free trial available!{% endblock %}" />
+	<meta name="keywords" content="{% block keywords %}Employee scheduling, Employee scheduling software, Staff scheduling, Staff scheduling Software, Employee Schedule Template, Work Schedule Template, Shift schedule template, Weekly Work Schedule, Shift Rota{% endblock %}" />
 	<title>{% block title %}Employee Scheduling has never been this Easy{% endblock %} | BusyBeeManager</title>
 	
 	<link rel="stylesheet" href="/static/css/foundation.css">
@@ -24,6 +26,16 @@
 	<![endif]-->
 </head>
 <body>
+  <!-- Newsletter Modal -->
+  <div id="newsletter-modal" class="reveal-modal">
+    <h2>Thank You</h2>
+    <p class="lead">We'll keep you posted with the latest information about BusyBeeManager.</p>
+    <p>You can at any time unsubscribe the newsletter, by clicking the unsubscribe link in the Newsletter.</p>
+
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  
+  
   <!-- Login Modal -->
   <div id="login-modal" class="reveal-modal">
     <h3>Login</h3>
@@ -63,11 +75,11 @@
           Hear about new features, promos, discounts and more. 
           Subscribe to our periodic newsletters.
         </p>
-        <form class="nice">
-          <input type="text" class="input-text" placeholder="youremail@address.com" tabindex="-1" />
+        <form id="newsletter-form" class="nice">
+          <input id="newsletter-email" name="newsletter-email" type="text" class="input-text required email" placeholder="youremail@address.com" tabindex="-1" />
         </form>
         <p>
-          Enter your e-mail address and press enter.  
+          Input your e-mail address and press enter.  
         </p>
         <p>
           You can always unsubscribe the newsletter.
@@ -101,7 +113,7 @@
           #busybee is the best online scheduling software out there - @propellerhead
         </p>
         <p>
-          <a href="#">Follow us on twitter</a>
+          <a href="http://twitter.com/busybeemanager">Follow us on twitter</a>
         </p>
       </div>
     </div>
@@ -110,20 +122,47 @@
       <div class="twelve columns center">
 		    <img id="footer-logo" src="/static/images/logo_white.png" />
 		    <p class="copyright">
-		      &copy; 2012 BusyBeeManager. All Rights Reserved.
+		      &copy; 2012 BusyBeeManager. All Rights Reserved. <a href="/sitemap">Sitemap</a>
 		    </p>
 		  </div>
     </div>
   </div>
-	
-	
-
 
 	<!-- Included JS Files -->
-	<script src="/static/js/jquery.min.js"></script>
-	<script src="/static/js/modernizr.foundation.js"></script>
-	<script src="/static/js/foundation.js"></script>
-	<script src="/static/js/app.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/modernizr.foundation.js"></script>
+	<script type="text/javascript" src="/static/js/foundation.js"></script>
+	<script type="text/javascript" src="/static/js/app.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+	<script type="text/javascript">
+	 $(function() {
+	   $("#newsletter-form").validate({
+       errorElement: "small"
+     });
+     
+     $("#newsletter-email").keypress(function(e) {
+       if(e.which == 13) {
+         if ($("#newsletter-form").valid()) {
+
+           $.ajax({
+             url: '/api/subscribe/' + $("#newsletter-email").val(),
+             dataType: 'json',
+             success: function(data) {
+               $("#newsletter-modal").reveal();
+             },
+             error: function() {
+               alert("!!!error!!!");
+             }
+           });
+           
+           return false;
+         }
+       }
+       
+       return true;
+     });
+   });
+	</script>
 	{% block script %}{% endblock %}
 </body>
 </html>

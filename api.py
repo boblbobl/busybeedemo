@@ -10,6 +10,8 @@ from google.appengine.api import urlfetch
 from django.utils import simplejson
 
 import logging
+
+from models import *
     
 class ApiHandler(webapp.RequestHandler):
   def get_page_name(self, path):
@@ -43,6 +45,24 @@ class ApiHandler(webapp.RequestHandler):
       except urlfetch.Error, e:
         logging.error('Could not contact BusyBee HQ Server.')
         #TODO: Handle error.
+    elif page_name == 'subscribe' and action:
+      email = urllib2.url2pathname(action)
+
+      if not Subscriber.email_exist(email):
+        s = Subscriber(email = email)
+        s.put()
+        
+        result = True
+    
+    elif page_name == 'page':
+      if action == 'create':
+        name = self.request.get('name')
+        
+        if not Page.page_exist(name):
+          p = Page(title = name, name = name)
+          p.put()
+          
+          result = True
     
     self.response.headers["Content-Type"] = "application/json"
     self.response.out.write(str(result).lower())

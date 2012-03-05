@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Sitemap{% endblock %}
+{% block body %}
+<!-- Main Content -->
+<div id="main" class="container">
+  <div class="row">
+    <div class="twelve columns">
+      <h1>Sitemap</h1>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/signup">Sign up</a></li>
+        <li><a href="/terms">Terms and Conditions</a></li>
+        {% for p in pages %}<li><a href="/{{ p.name }}">{{ p.title }}</a></li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -26,6 +26,10 @@ textarea {
   resize: none;
 }
 
+li {
+  margin-bottom: 2px; /* Zurb Foundation Overwrite */
+}
+
 #top {
   height: 50px;
   background-image: url(/static/images/black_linen_v2.png);
