@@ -102,18 +102,10 @@
         </p>
       </div>
       <div class="four columns">
-        <h5>Heard on Twitter</h5>
-        <p class="tweet">
-          Check out our new automatic employee scheduling tutorial. #busybee - @busybee
-        </p>
-        <p class="tweet">
-          The new version of #busybee is soon to be released. - @busybee
-        </p>
-        <p class="tweet">
-          #busybee is the best online scheduling software out there - @propellerhead
-        </p>
+        <h5>Recent Tweets</h5>
+        {% for t in tweets %}<p class="tweet">{{ t.text }}</p>{% endfor %}
         <p>
-          <a href="http://twitter.com/busybeemanager">Follow us on twitter</a>
+          <a href="http://twitter.com/busybeemanager">Follow us on Twitter</a>
         </p>
       </div>
     </div>

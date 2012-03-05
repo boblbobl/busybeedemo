@@ -4,10 +4,28 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 
 from google.appengine.ext.webapp import template
+from google.appengine.api import memcache
+
+import urllib2
+from google.appengine.api import urlfetch
+
+from django.utils import simplejson
 
 from models import *
 
 class MainHandler(webapp.RequestHandler):
+  def get_tweets(self):
+    tweets = memcache.get("tweets")
+    if tweets is not None:
+      return tweets
+    else:
+      twitter = urllib2.urlopen('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=busybeemanager&count=3')
+      twitter_json = twitter.read()
+    
+      data = simplejson.loads(twitter_json)
+      memcache.add("tweets", data, 3600)
+      return data
+  
   def get_pages(self):
     pages = Page.all().order("name")
     return pages
@@ -37,10 +55,12 @@ class MainHandler(webapp.RequestHandler):
     action = self.get_action(path)
     
     pages = self.get_pages()
+    tweets = self.get_tweets()
     
     template_values = {
       'action': action,
-      'pages': pages
+      'pages': pages,
+      'tweets': tweets
     }
 
     if page_name:
