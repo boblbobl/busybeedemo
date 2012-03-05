@@ -58,17 +58,18 @@ class MainHandler(webapp.RequestHandler):
     tweets = self.get_tweets()
     
     template_values = {
+      'name': page_name,
       'action': action,
       'pages': pages,
       'tweets': tweets
     }
 
     if page_name:
-      if page_name == 'signup':
+      if page_name == 'signup' and action is None:
         template_page = os.path.join(os.path.dirname(__file__), 'templates/signup.html')
-      elif page_name == 'sitemap':
+      elif page_name == 'sitemap' and action is None:
         template_page = os.path.join(os.path.dirname(__file__), 'templates/sitemap.html')
-      elif page_name == 'terms':
+      elif page_name == 'terms' and action is None:
         template_page = os.path.join(os.path.dirname(__file__), 'templates/terms.html')
       elif Page.page_exist(page_name):
         p = pages.filter('name = ', page_name).get()
@@ -76,12 +77,16 @@ class MainHandler(webapp.RequestHandler):
         page_values = {
           'title': p.title,
           'meta_description': '' if p.meta_description == None else p.meta_description,
-          'meta_keywords': '' if p.meta_keywords == None else p.meta_keywords
+          'meta_keywords': '' if p.meta_keywords == None else p.meta_keywords,
+          'content': '' if p.content == None else p.content,
+          'edit': True if action == 'edit' else False
         }
         template_values.update(page_values)
-        template_page = os.path.join(os.path.dirname(__file__), 'templates/empty.html')
+        template_page = os.path.join(os.path.dirname(__file__), 'templates/page.html')
       else:
+        #TODO: Handle legacy site urls
         template_page = os.path.join(os.path.dirname(__file__), 'templates/404.html')
+        self.error(404)
     else:
       template_page = os.path.join(os.path.dirname(__file__), 'templates/index.html')
     

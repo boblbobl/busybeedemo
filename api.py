@@ -63,6 +63,22 @@ class ApiHandler(webapp.RequestHandler):
           p.put()
           
           result = True
+      elif action == 'update':
+        name = self.request.get('name')
+        title = self.request.get('title')
+        keywords = self.request.get('keywords')
+        description = self.request.get('description')
+        content = self.request.get('content')
+        
+        if Page.page_exist(name):
+          p = Page.all().filter('name = ', name).get()
+          p.title = title
+          p.meta_description = description
+          p.meta_keywords = keywords
+          p.content = content
+          p.put()
+          
+          result = True
     
     self.response.headers["Content-Type"] = "application/json"
     self.response.out.write(str(result).lower())

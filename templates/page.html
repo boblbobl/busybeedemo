@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block description %}{{ meta_description }}{% endblock %}
+{% block keywords %}{{ meta_keywords }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+
+<!-- Main Content -->
+<div id="main" class="container">
+  <div class="row">
+    <div class="twelve columns">
+      <h1 id="title">{{ title }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div id="content" class="eight columns">
+      {{ content }}
+    </div>
+    <div class="eight columns">
+    </div>
+  </div>
+</div>
+
+{% if edit %}
+<!-- Edit Panel -->
+<div id="edit">
+  <form id="edit-form" class="nice">
+    <label for="page-title">Title</label>
+    <input id="page-title" type="text" class="input-text required" value="{{ title }}" />
+    <label for="page-description">Description</label>
+    <input id="page-description" type="text" class="input-text" value="{{ meta_description }}" />
+    <label for="page-keywords">Keywords</label>
+    <input id="page-keywords" type="text" class="input-text" value="{{ meta_keywords }}" />
+    
+    <label for="page-content">Content</label>
+    <textarea id="page-content">{{ content }}</textarea>
+    
+    <input id="btn-save" type="button" value="Save" class="small radius black button" />
+    <input id="btn-preview" type="button" value="Preview" class="small radius white button" />
+    
+    <a href="/{{ name }}" class="close-edit">&#215;</a>
+  </form>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block script %}
+{% if edit %}
+<script type="text/javascript">
+  function UpdateContent() {
+    $("h1#title").html($("#page-title").val());
+    $("div#content").html($("#page-content").val());
+  }
+
+	$(function() {
+	  $("#edit-form").validate({
+       errorElement: "small"
+    });
+	  
+	  $("input#btn-preview").click(function() {
+	    if ($("#edit-form").valid()) {
+	      UpdateContent();
+	    }
+    });
+	  
+	  $("input#btn-save").click(function(){
+      if ($("#edit-form").valid()) {
+	      $.ajax({
+          url: '/api/page/update',
+          dataType: 'json',
+          data: {
+            name: '{{ name }}',
+            title: $("#page-title").val(),
+            keywords: $("#page-keywords").val(),
+            description: $("#page-description").val(),
+            content: $("#page-content").val()
+          },
+          success: function(data) {
+            if ($("#notification").length == 0) {
+              var notification = $('<div></div>').attr('id', 'notification')
+                .addClass('alert-box')
+                .addClass('success')
+                .html("Content saved successfully.");
+
+              $("#edit-form").prepend(notification);
+            }
+            else {
+              var notification = $("#notification").removeClass('error');
+              notification.html("Content saved successfully.")
+            }
+          },
+          error: function() {
+            if ($("#notification").length == 0) {
+              var notification = $('<div></div>').attr('id', 'notification')
+                .addClass('alert-box')
+                .addClass('error')
+                .html("An error occurred while saving content.");
+
+              $("#edit-form").prepend(notification);
+            }
+            else {
+              var notification = $("#notification").removeClass('success');
+              notification.html("An error occurred while saving content.")
+            }
+          }
+        })
+	    }
+	  });
+	});
+</script>
+{% endif %}
+{% endblock %}

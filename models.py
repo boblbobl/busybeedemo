@@ -17,7 +17,7 @@ class Page(db.Model):
   name = db.StringProperty(required=True)
   meta_description = db.StringProperty()
   meta_keywords = db.StringProperty()
-  content = db.StringProperty()
+  content = db.TextProperty()
   last_updated = db.DateTimeProperty(auto_now=True)
   created = db.DateTimeProperty(auto_now_add=True)
 
